@@ -1,0 +1,54 @@
+<div *ngIf="createMode" class="card">
+  <div class="card-body">
+    <div class="card-title">
+      <h1 class="display-4">Crear rol</h1>
+    </div>
+    <div class="card-text">
+      <form #form=ngForm (ngSubmit)="onCreate();">
+        <div class="form-group">
+          id:
+          <input class="form-control" name="id" type="number" [(ngModel)]="nuevoRol.id" disabled>
+        </div>
+        <div class="form-group">
+          description:
+          <input type="text" name="description" #description="ngModel" [class.is-valid]="description.valid"
+            [class.is-invalid]="description.invalid" class="form-control" [(ngModel)]="nuevoRol.description" required>
+        </div>
+        <button class="btn btn-success" type="submit" [disabled]="!form.valid">Save</button>
+      </form>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="card" *ngIf="!createMode">
+  <div class="card-body">
+    <div class="card-title">
+      <h1 class="display-4">Roles</h1>
+      <button class="btn btn-primary" (click)="crearRol();">Crear</button>
+    </div>
+    <div class="card-text">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Descripcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rol of roles" (click)="onSelect(rol);">
+              <td>{{rol.id}}</td>
+              <td>{{rol.description}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<app-detalle-rol [rol]="rolSeleccionado"></app-detalle-rol>

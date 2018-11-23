@@ -1,0 +1,21 @@
+<br>
+<div *ngIf="rol" class="card">
+  <div class="card-body">
+      <div class="card-title">
+          <h1 class="display-4">Detalle rol</h1>
+        </div>
+    <div class="card-text">
+      <form #form = ngForm (ngSubmit) = "onEdit();">
+        <div class="form-group">
+          id:
+          <input class="form-control" name="id" type="number" [(ngModel)] = "rol.id" disabled>
+        </div>
+        <div class="form-group">
+          description:
+          <input type="text" name="description" #description ="ngModel" [class.is-valid] = "description.valid" [class.is-invalid] = "description.invalid" class="form-control" [(ngModel)] = "rol.description" required>
+         </div>
+         <button class="btn btn-success" type="submit" [disabled] ="!form.valid">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

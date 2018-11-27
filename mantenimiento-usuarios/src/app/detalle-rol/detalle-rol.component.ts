@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Rol } from '../share/models/rol';
 import { HttpClient } from '@angular/common/http';
 import { RolService } from '../share/rol.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-rol',
@@ -10,14 +11,24 @@ import { RolService } from '../share/rol.service';
 })
 export class DetalleRolComponent implements OnInit {
 
-  @Input()
   rol : Rol;
 
-  constructor(private rolService: RolService) {
+  constructor(private rolService: RolService, private route: ActivatedRoute) {
     this.rolService = rolService;
+    this.route = route;
    }
 
   ngOnInit() {
+    this.route.paramMap
+    .subscribe(parameters => {
+      let id =  Number(parameters.get("id"));
+      this.getRole(id);
+    });
+  }
+
+  getRole(id : number){
+    this.rolService.getRole(id)
+      .subscribe((data : Rol) => this.rol = data);
   }
 
   onEdit() : void{

@@ -22,4 +22,8 @@ export class RolService {
   editRole(rol : Rol){
     return this.http.put("http://localhost:8080/api/roles/" + rol.id, rol);
   }
+
+  getRole(id : number){
+    return this.http.get("http://localhost:8080/api/roles/" + id);
+  }
 }

@@ -7,18 +7,31 @@ import { HttpClientModule } from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { DetalleRolComponent } from './detalle-rol/detalle-rol.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+
+
+const routes : Routes = [
+  { path: "", redirectTo: "users", pathMatch: "full"},
+  { path: "users", component: UsuariosComponent},
+  { path: "roles", component: RolesComponent},
+  { path: "roles/:id", component: DetalleRolComponent},
+  { path: "**", component: PageNotFoundComponent}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
     RolesComponent,
     DetalleRolComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

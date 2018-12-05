@@ -9,10 +9,12 @@ import { DetalleRolComponent } from './detalle-rol/detalle-rol.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 
 
 const routes : Routes = [
   { path: "", redirectTo: "users", pathMatch: "full"},
+  { path: "login", component: InicioSesionComponent},
   { path: "users", component: UsuariosComponent},
   { path: "roles", component: RolesComponent},
   { path: "roles/:id", component: DetalleRolComponent},
@@ -25,7 +27,8 @@ const routes : Routes = [
     RolesComponent,
     DetalleRolComponent,
     UsuariosComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    InicioSesionComponent
   ],
   imports: [
     BrowserModule,

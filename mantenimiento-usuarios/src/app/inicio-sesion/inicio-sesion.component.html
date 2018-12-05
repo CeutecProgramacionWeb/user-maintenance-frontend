@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="text-center pt-2 pb-2 text-white">Iniciar Sesión</h1>
+  <div class="card w-50 m-auto">
+    <form class="p-4" #form=ngForm (ngSubmit)="login();">
+      <div class="group-form">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" placeholder="username" required [(ngModel)]="loginUser.userName" #username="ngModel" [class.is-valid] = "username.valid" [class.is-invalid] = "!username.valid && username.dirty">
+        <label>Password</label>
+        <input type="password" class="form-control" name="password" placeholder="password" required [(ngModel)]="loginUser.password" #password="ngModel" [class.is-valid] = "password.valid" [class.is-invalid] = "!password.valid && password.dirty">
+        <div class="pt-4 text-center">
+          <button type="submit" class="btn btn-primary w-100" [disabled]="!form.valid">Enviar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

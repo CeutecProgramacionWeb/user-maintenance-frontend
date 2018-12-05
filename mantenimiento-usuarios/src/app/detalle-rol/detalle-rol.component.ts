@@ -21,6 +21,7 @@ export class DetalleRolComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
     .subscribe(parameters => {
+      debugger;
       let id =  Number(parameters.get("id"));
       this.getRole(id);
     });

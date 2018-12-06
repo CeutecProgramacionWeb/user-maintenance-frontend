@@ -18,5 +18,9 @@ export class AutenticacionService {
 
     return this.http.post("https://stackoverflowcgvm.apphb.com/Token", data, { headers: headers });
   }
+
+  getToken(): string{
+    return localStorage.getItem("Token");
+  }
 }
 

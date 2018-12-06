@@ -10,14 +10,14 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
-
+import { AuthenticationGuard } from './auth/authentication.guard';
 
 const routes : Routes = [
-  { path: "", redirectTo: "users", pathMatch: "full"},
+  { path: "", redirectTo: "login", pathMatch: "full"},
   { path: "login", component: InicioSesionComponent},
-  { path: "users", component: UsuariosComponent},
-  { path: "roles", component: RolesComponent},
-  { path: "roles/:id", component: DetalleRolComponent},
+  { path: "users", component: UsuariosComponent,  canActivate: [AuthenticationGuard]},
+  { path: "roles", component: RolesComponent, canActivate: [AuthenticationGuard]},
+  { path: "roles/:id", component: DetalleRolComponent, canActivate: [AuthenticationGuard]},
   { path: "**", component: PageNotFoundComponent}
 ];
 
@@ -36,7 +36,7 @@ const routes : Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

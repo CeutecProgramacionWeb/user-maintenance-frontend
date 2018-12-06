@@ -25,7 +25,7 @@ export class InicioSesionComponent implements OnInit {
       .subscribe((data : any) => {
         localStorage.setItem("Token", data.access_token);
         localStorage.setItem("username", data.userName);
-        this.router.navigate([""]);
+        this.router.navigate(["/users"]);
       }, error => alert("Error"));
   }
 }

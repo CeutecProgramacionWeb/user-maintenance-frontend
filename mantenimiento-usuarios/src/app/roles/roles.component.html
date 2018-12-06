@@ -38,8 +38,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let rol of roles" (click)="onSelect(rol);">
-              <td>{{rol.id}}</td>
+            <tr *ngFor="let rol of roles">
+              <td><a routerLink="/roles/{{rol.id}}">{{rol.id}}</a> </td>
               <td>{{rol.description}}</td>
             </tr>
           </tbody>
